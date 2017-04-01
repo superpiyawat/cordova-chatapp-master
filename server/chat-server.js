@@ -51,6 +51,12 @@ io.on('connection', function(socket){
 	io.emit("clientCanvas",true);
  });
 
+socket.on("movingObject",function (msg) {
+  console.log("true แล้นนน");
+  io.emit("m2",true);
+ });
+
+
 	socket.on('join:room', function(data){
 		var room_name = data.room_name;
 		socket.join(room_name);
