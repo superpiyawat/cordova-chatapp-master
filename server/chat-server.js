@@ -14,35 +14,35 @@ io.on('connection', function(socket){
 
 
 	socket.on("textE1", function(msg){
-	  console.log(msg);
+	  console.log("Textboxt Created");
 		io.emit("clientTextE1", true);
 	});
 
 	socket.on("shapeE1", function(msg){
-		console.log(msg);
+		console.log("Circle Created");
 		io.emit("clientCircleE1", true);
 	});
 
   socket.on("squareE1",function(msg){
-		console.log(msg);
+		console.log("Squre Created");
 		io.emit("clientSquareE1",true);
 	});
 
  socket.on("TriangleE1",function(msg){
-	 console.log(msg);
+	 console.log("Triangle Created");
 	 io.emit("clientTriangleE1",true);
  });
  socket.on("RemoveE1",function(msg){
-	 console.log(msg);
+	 console.log("Remove Obj");
 	 io.emit("clientRemoveE1",true);
  });
  socket.on("clearEl",function(msg){
-	console.log(msg);
+	console.log("Remove all obj");
 	io.emit("clientClearEl",true);
  });
 
  socket.on("drawingModeEl",function(msg){
-	console.log(msg);
+	console.log("Drawing Mode Enable");
 	io.emit("clientDrawingModeEl",true);
  });
 
@@ -51,9 +51,11 @@ io.on('connection', function(socket){
 	io.emit("clientCanvas",true);
  });
 
-socket.on("movingObject",function (msg) {
-  console.log("true แล้นนน");
-  io.emit("m2",true);
+socket.on("movingObject",function (msg,x,y,Obj) {
+	var mobj= Obj;
+	console.log("moving"+" X update="+x+" Y update"+y);
+	var newx=x;var newy=y;
+  io.emit("m2",true,newx,newy,Obj);
  });
 
 
