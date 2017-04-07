@@ -51,11 +51,10 @@ io.on('connection', function(socket){
 	io.emit("clientCanvas",true);
  });
 
-socket.on("movingObject",function (msg,x,y,Obj) {
-	var mobj= Obj;
+socket.on("movingObject",function (msg,x,y,Obj,mtr) {
 	console.log("moving"+" X update="+x+" Y update"+y);
 	var newx=x;var newy=y;
-  io.emit("m2",true,newx,newy,Obj);
+  io.emit("m2",true,newx,newy,Obj,mtr);
  });
 
 
