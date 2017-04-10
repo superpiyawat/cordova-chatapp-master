@@ -32,9 +32,9 @@ io.on('connection', function(socket){
 	 console.log("Triangle Created");
 	 io.emit("clientTriangleE1",true);
  });
- socket.on("RemoveE1",function(msg){
+ socket.on("RemoveE1",function(msg,active){
 	 console.log("Remove Obj");
-	 io.emit("clientRemoveE1",true);
+	 io.emit("clientRemoveE1",active);
  });
  socket.on("clearEl",function(msg){
 	console.log("Remove all obj");
