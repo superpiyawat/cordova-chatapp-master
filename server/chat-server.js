@@ -51,12 +51,16 @@ io.on('connection', function(socket){
 	io.emit("clientCanvas",true);
  });
 
-socket.on("movingObject",function (msg,x,y,Obj,mtr) {
+socket.on("movingObject",function (msg,x,y,Obj,mtr,mb) {
 	console.log("moving"+" X update="+x+" Y update"+y);
 	var newx=x;var newy=y;
-  io.emit("m2",true,newx,newy,Obj,mtr);
+  io.emit("m2",true,newx,newy,Obj,mtr,mb);
  });
 
+socket.on("scalingObject",function (msg,w,h,id,mb,text,bt) {
+	console.log("Width = "+w+"Height= "+h);
+   io.emit("scaling",true,w,h,id,mb,text,bt);
+  });
 
 	socket.on('join:room', function(data){
 		var room_name = data.room_name;
