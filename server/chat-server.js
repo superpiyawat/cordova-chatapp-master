@@ -57,10 +57,16 @@ socket.on("movingObject",function (msg,x,y,Obj,mtr,mb) {
   io.emit("m2",true,newx,newy,Obj,mtr,mb);
  });
 
-socket.on("scalingObject",function (msg,w,h,id,mb,text,bt) {
-	console.log("Width = "+w+"Height= "+h);
-   io.emit("scaling",true,w,h,id,mb,text,bt);
+socket.on("scalingObject",function (msg,w,h,id,mb,text,bt,ch,cw) {
+	console.log("Width = "+w+"Height= "+h+"cw="+cw+"ch="+ch);
+   io.emit("scaling",true,w,h,id,mb,text,bt,ch,cw);
   });
+
+	socket.on("textObject",function (msg,w,h,id,mb,text,bt,ch,cw) {
+		//console.log("Width = "+w+"Height= "+h+"cw="+cw+"ch="+ch);
+	   io.emit("texting",true,w,h,id,mb,text,bt,ch,cw);
+	  });
+
 
 	socket.on('join:room', function(data){
 		var room_name = data.room_name;
