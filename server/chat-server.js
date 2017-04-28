@@ -44,6 +44,20 @@ io.on('connection', function(socket){
 	console.log("Line");
 	io.emit("clientLineE1",true);
  });
+
+ socket.on("LineE2",function(msg){
+ console.log("line2");
+ io.emit("clientLineE2",true);
+ });
+
+ socket.on("LineE3",function(msg){
+ console.log("line3");
+ io.emit("clientLineE3",true);
+ });
+ socket.on("LineE4",function(msg){
+ console.log("line4");
+ io.emit("clientLineE4",true);
+ });
  socket.on("drawingModeEl",function(msg){
 	console.log("Drawing Mode Enable");
 	io.emit("clientDrawingModeEl",true);
