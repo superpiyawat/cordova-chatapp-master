@@ -40,7 +40,10 @@ io.on('connection', function(socket){
 	console.log("Remove all obj");
 	io.emit("clientClearEl",true);
  });
-
+ socket.on("LineE1",function(msg){
+	console.log("Line");
+	io.emit("clientLineE1",true);
+ });
  socket.on("drawingModeEl",function(msg){
 	console.log("Drawing Mode Enable");
 	io.emit("clientDrawingModeEl",true);
@@ -53,13 +56,14 @@ io.on('connection', function(socket){
 
 socket.on("movingObject",function (msg,x,y,Obj,mtr,mb) {
 	console.log("moving"+" X update="+x+" Y update"+y);
+	//console.log(mb);
 	var newx=x;var newy=y;
   io.emit("m2",true,newx,newy,Obj,mtr,mb);
  });
 
-socket.on("scalingObject",function (msg,w,h,id,mb,text,bt,ch,cw) {
+socket.on("scalingObject",function (msg,w,h,id,mb,text,bt,ch,cw,cc) {
 	console.log("Width = "+w+"Height= "+h+"cw="+cw+"ch="+ch);
-   io.emit("scaling",true,w,h,id,mb,text,bt,ch,cw);
+   io.emit("scaling",true,w,h,id,mb,text,bt,ch,cw,cc);
   });
 
 	socket.on("textObject",function (msg,w,h,id,mb,text,bt,ch,cw) {
