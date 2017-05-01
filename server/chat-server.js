@@ -1,5 +1,4 @@
 var io = require('socket.io')(3000);
-
 console.log("HHHH");
 io.on('connection', function(socket){
 	console.log("connection");
@@ -102,6 +101,11 @@ socket.on("scalingObject",function (msg,w,h,id,mb,text,bt,ch,cw,cc) {
 	socket.on('send:message', function(msg){
 		socket.in(msg.room).emit('message', msg);
 	});
+
+
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
 
 
 });
