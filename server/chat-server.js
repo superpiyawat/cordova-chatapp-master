@@ -2,8 +2,8 @@ var io = require('socket.io')(3000);
 console.log("HHHH");
 io.on('connection', function(socket){
 	console.log("connection");
-	socket.on("pao", function(msg,data){
-	  console.log(msg,data);
+	socket.on("pao", function(msg){
+	  console.log(msg);
 	});
 
 	socket.on("translateObject", function(Object){
@@ -103,8 +103,9 @@ socket.on("scalingObject",function (msg,w,h,id,mb,text,bt,ch,cw,cc) {
 	});
 
 
-  socket.on('chat message', function(msg){
-    io.emit('chat message',msg);
+  socket.on('chat message', function(msg,use){
+		console.log(msg,use);
+    io.emit('chat message',msg,use);
   });
 
 socket.on('newuser',function(data,collback){
