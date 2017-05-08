@@ -6,9 +6,9 @@ io.on('connection', function(socket){
 	  console.log(msg);
 	});
 
-	socket.on("translateObject", function(Object){
-		console.log(Object.target,Object.x,Object.y);
-		io.emit("translateObjectOn",Object);
+	socket.on("translateObject", function(n){
+		console.log(n);
+		io.emit("translateObjectOn",n);
 	});
 
 
